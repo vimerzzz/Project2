@@ -1,0 +1,47 @@
+<%- include("../_partials/_header") %>
+
+    <div class="container">
+        <div class="container">
+            <div class="preview-content">
+                <% shops.forEach(function(shop){ %>
+                    <% if(shop.totalItem > 0){ %>
+                        <h4 class="no-select view-item-shop" style="margin: 0px;">
+                            <a href="/user/<%= shop.user.username %>" style="margin: 0px;"><%= shop.shopName %></a>
+                        </h4>
+                        <div class="preview-all-item">
+                            <ul class="row no-select" style="padding: 0px">
+                                <% var count = 0; %>
+                                <% for(var item of shop.items){ %>
+                                    <% if(count > 5) break; %>
+                                    <% count++; %>
+                                    <li class="preview-item">
+                                        <a class="text-decoration-none" href="/item/<%= item.itemNameUrl %>">
+                                            <div class="preview-item-image">
+                                                <img class="preview-item-image-child" src="../<%= item.image %>" width="150px">
+                                            </div>
+                                            <div class="preview-item-name"><%= item.itemName %></div>
+                                            <% if(item.price != item.priceDiscount){ %>
+                                                <div class="preview-item-old-price"><%= item.price %></div>
+                                                <div class="preview-item-price text-danger"><%= item.priceDiscount %></div>
+                                            <% } %>
+                                            <% if(item.price == item.priceDiscount){ %>
+                                                <div class="preview-item-price text-danger"><%= item.price %></div>
+                                            <% } %>
+                                            <% if(item.amount){ %>
+                                                <div class="preview-item-status text-danger">CÒN HÀNG</div>
+                                            <% } %>
+                                            <% if(!item.amount){ %>
+                                                <div class="preview-item-status text-danger">HẾT HÀNG</div>
+                                            <% } %>
+                                        </a>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    <% } %>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+
+<%- include("../_partials/_footer") %>

@@ -1,0 +1,39 @@
+<%- include("../_partials/_shop") %>
+
+    <div class="col-md-9">
+        <div class="personal-form">
+            <h1 class="no-select text-center">THỐNG KÊ</h1>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Tên shop</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control item-detail-disabled" value="<%= shop.shopName %>" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Thông tin shop</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control item-detail-disabled" name="shopInformation" rows="5" disabled><%= shop.shopInformation %></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Tổng số sản phẩm</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control item-detail-disabled" value="<%= shop.totalItem %>" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Tổng số người theo dõi</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control item-detail-disabled" value="<%= shop.totalFollower %>" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Doanh thu trong năm 2021</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control item-detail-disabled" value="<%= income %>" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include("../_partials/_footer") %>

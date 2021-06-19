@@ -1,0 +1,79 @@
+<%- include("../_partials/_shop") %>
+
+    <div class="col-md-9">
+        <form method="POST" action="/shop/item-create" class="personal-form" enctype="multipart/form-data">
+            <% if(info && info.length > 0){ %>
+                <div class="alert alert-info alert-information" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger alert-information" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <h1 class="no-select text-center">TẠO SẢN PHẨM MỚI</h1>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Tên sản phẩm</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="itemName">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Giá sản phẩm (VNĐ)</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="price" oninput="getPriceDiscount(this)">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Giá giảm còn (VNĐ)</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="priceDiscount">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Số lượng sản phẩm</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="amount">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Loại sản phẩm</label>
+                <div class="col-sm-9">
+                    <select class="form-select" id="category" name="categoryId" onchange="getCategory()">
+                        <option value="0" selected>Chọn loại sản phẩm</option>
+                        <% categories.forEach(function(category){ %>
+                            <option value="<%= category.id %>"><%= category.id %> - <%= category.category %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Mô tả sản phẩm</label>
+                <div class="col-sm-9" id="information">
+                    <textarea class="form-control" name="information" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Hình ảnh sản phẩm</label>
+                <div class="col-sm-9">
+                    <input accept="image/*" type="file" class="form-control" name="image" onchange="imgInput(event)">
+                </div>
+            </div>
+            <div class="row mb-3 hidden" id="img_div">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select"></label>
+                <div class="col-sm-9">
+                    <img id="img" src="#" width="300px">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-5"></div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/shop/imgInput.js"></script>
+    <script src="../js/shop/getCategory.js"></script>
+    <script src="../js/shop/getPriceDiscount.js"></script>
+
+<%- include("../_partials/_footer") %>

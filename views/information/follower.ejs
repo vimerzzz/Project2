@@ -1,0 +1,44 @@
+<%- include("../_partials/_information") %>
+
+    <div class="col-md-9">
+        <div class="personal-form">
+            <h1 class="no-select text-center">SỔ THEO DÕI</h1>
+            <div id="followPaginationTable">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control pa_search" id="datatable-search-input" placeholder="search" style="width: 300px;">
+                    <label class="form-label" for="datatable-search-input">Search</label>
+                </div>
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr class="no-select">
+                            <th class="pa_sort" data-sort="pa_count" style="width: 40px;">#</th>
+                            <th class="pa_sort" data-sort="pa_shop" style="width: 500px;">Tên shop</th>
+                            <th class="pa_sort" data-sort="pa_date">Ngày theo dõi</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="pa_list">
+                        <% var count = 0; %>
+                        <% follows.forEach(function(follow){ %>
+                            <% count++; %>
+                            <tr>
+                                <td class="hidden" name="shopId"><%= follow.shopId %></td>
+                                <td class="pa_count"><%= count %></td>
+                                <td class="pa_shop hidden"><%= follow.shop.shopName %></td>
+                                <td class="item-detail"><a href="/user/<%= follow.shop.user.username %>"><%= follow.shop.shopName %></a></td>
+                                <td class="pa_date hidden"><%= follow.createdAt %></td>
+                                <td class="pa_date_2"><%= follow.fullDate %></td>
+                                <td class="item-detail" name="onFollow" onclick="remove_follow(this)">Bỏ theo dõi</td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-end mt-2">
+                    <ul class="pagination"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/information/follow.js"></script>
+
+<%- include("../_partials/_footer") %>

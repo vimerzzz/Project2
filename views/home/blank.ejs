@@ -1,0 +1,14 @@
+<%- include("../_partials/_header") %>
+
+<% if(info && info.length > 0){ %>
+    <div class="alert alert-info alert-blank" role="alert">
+        <%= info %>
+    </div>
+<% } %>
+<% if(error && error.length > 0){ %>
+    <div class="alert alert-danger alert-blank" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+
+<%- include("../_partials/_footer") %>

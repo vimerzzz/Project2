@@ -1,0 +1,187 @@
+.cart-layout{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+.cart-layout > .col-md-8{
+    min-width: 530px!important;
+}
+
+.cart-layout > .col-md-3{
+    min-width: 200px!important;
+}
+
+.cart-item{
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    margin-bottom: 2rem;
+    display: flex;
+    min-width: 530px!important;
+}
+
+.cart-item-image{
+    height: 90px!important;
+    max-height: 90px!important;
+    margin-right: 20px;
+}
+
+.cart-item-info{
+    padding-top: 10px;
+    width: 100%;
+}
+
+.cart-item-info-name{
+    height: 1.5rem;
+    overflow: hidden;
+}
+
+.cart-item-info-name > a{
+    text-decoration: none;
+    color: black;
+}
+
+.cart-item-info-name > a:hover{
+    color: rgb(37, 173, 173);
+}
+
+.cart-item-info-price{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 1.5rem;
+    position: relative;
+}
+
+.cart-item-info-price > div:first-of-type{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.cart-item-old-price{
+    color: rgb(151, 151, 151);
+    text-decoration: line-through;
+}
+
+.cart-item-price{
+    position: absolute;
+    right: 3%;
+    color: #dc3545;
+}
+
+.cart-item-info-amount{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 1.5rem;
+    position: relative;
+}
+
+.cart-item-info-amount > div:last-of-type{
+    position: absolute;
+    right: 3%;
+}
+
+.cart-item-info-button{
+    margin-left: 2rem;
+    align-items: center;
+}
+
+.cart-item-info-button > button, .cart-item-info-button > span > input{
+    background-color: rgb(255, 255, 255);
+    margin: 0px;
+    border: 1px solid rgb(197, 197, 197);
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 1px 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cart-item-info-button > span > input{
+    width: 60px;
+}
+
+.cart-item-info-button > button:hover, .cart-item-info-button > button:focus, .cart-item-info-button > span > input:hover, .cart-item-info-button > span > input:focus{
+    border: 1px solid rgb(197, 197, 197);
+    outline: none;
+    overflow: hidden;
+}
+
+.cart-item-info-button > button:after{
+    content: "";
+    background-color: rgba(215, 215, 215, 0.4);
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-top: 100%;
+    padding-left: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+.cart-item-info-button > button:active:after {
+    padding-top: 100%;
+    padding-left: 100%;
+    opacity: 1;
+    transition: 0s;
+}
+
+.cart-item-update{
+    width: 150px;
+    border-left: 1px solid rgb(184, 184, 184);
+    text-align: center;
+}
+
+.cart-item-update > div:first-of-type{
+    padding-top: 15px;
+}
+
+.cart-item-update > div:last-of-type{
+    padding-top: 10px;
+}
+
+.cart-item-update > div:hover{
+    color: rgb(37, 173, 173);
+    cursor: pointer;
+}
+
+.cart-purchase{
+    background-color: white;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    height: fit-content;
+}
+
+.cart-purchase-info{
+    height: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.cart-purchase-info > span:first-of-type{
+    position: absolute;
+    left: 3%;
+}
+
+.cart-purchase-info > span:last-of-type{
+    position: absolute;
+    right: 3%;
+}
+
+.cart-purchase-button{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cart-purchase-button > a > button{
+    border-radius: 15px;
+}

@@ -1,0 +1,138 @@
+<%- include("../_partials/_header") %>
+
+    <div class="container">
+        <div class="view-item-layout container">
+            <div class="row no-select" style="padding: 0px;">
+                <div class="view-item-image-layout">
+                    <div class="view-item-image">
+                        <img src="../<%= item.image %>" class="view-item-image-child" width="400px">
+                    </div>
+                    <div class="view-item-info">
+                        <h2><%= item.itemName %></h2>
+                        <div style="display: flex; margin-top: 3rem; align-items: center;">
+                            <div class="text-danger">
+                                0.0
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div style="margin-left: 2rem;">0 Đánh giá</div>
+                            <div style="margin-left: 2rem;"><%= item.sold %> Đã bán</div>
+                        </div>
+                        <div style="display: flex; margin-top: 1rem; align-items: center;">
+                            <% if(item.price != item.priceDiscount){ %>
+                                <div class="view-item-old-price fs-6"><%= item.price %></div>
+                                <div class="text-danger fs-3" style="margin-left: 1rem;"><%= item.priceDiscount %></div>
+                                <div class="discount-percent"><b><%= discountPercent %>% GIẢM</b></div>
+                            <% } %>
+                            <% if(item.price == item.priceDiscount){ %>
+                                <div class="text-danger fs-3"><%= item.price %></div>
+                            <% } %>
+                        </div>
+                        <div style="display: flex; margin-top: 3rem; align-items: center;">
+                            Số lượng
+                            <div class="button-select-amount">
+                                <button type="button" onclick="get_before_number(this)" name="be_b">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span name="numberInput">
+                                    <% if(item.amount){ %>
+                                        <input type="text" value="1" name="number" id="number" onkeypress="return (event.charCode >= 48) && (event.charCode <= 57);" oninput="check_limit(this)">
+                                    <% } %>
+                                    <% if(!item.amount){ %>
+                                        <input type="text" value="0" readonly>
+                                    <% } %>
+                                </span>
+                                <button type="button" onclick="get_after_number(this)" name="af_b">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="margin-left: 8rem;">
+                            <br>
+                            <span name="amount"><%= item.amount %></span> Sản phẩm có sẵn
+                        </div>
+                        <div style="display: flex; margin-top: 4rem; align-items: center;">
+                            <% if(item.amount){ %>
+                                <button type="button" class="btn btn-outline-danger add-cart" onclick="add_cart()" id="buttonCart" value="<%= item.itemNameUrl %>">
+                                    <i class="fas fa-cart-arrow-down"></i>
+                                    Thêm vào giỏ hàng
+                                </button>
+                                <button type="button" class="btn btn-danger add-cart" onclick="add_cart_and_buy()" id="buttonBuy" value="<%= item.itemNameUrl %>">
+                                    <i class="fas fa-ruble-sign"></i>
+                                    Mua ngay
+                                </button>
+                            <% } %>
+                            <% if(!item.amount){ %>
+                                <button type="button" class="btn btn-danger add-cart" disabled>
+                                    Sản phẩm tạm hết hàng
+                                </button>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-item-layout container no-select">
+            <div class="view-item-banner">
+                <div class="view-item-avatar" style="background-image: url(../<%= image %>);"> </div>
+                <div class="view-item-shop fs-4">
+                    <a href="/user/<%= item.shop.user.username %>">
+                        <b><%= item.shop.shopName %></b>
+                    </a>
+                    <div>
+                        <button type="button" class="view-item-button fs-6">
+                            <i class="fas fa-comment"></i>
+                            <span>Chat</span>
+                        </button>
+                        <a href="/user/<%= item.shop.user.username %>">
+                            <button type="button" class="view-item-button fs-6">
+                                <i class="fas fa-store"></i>
+                                <span>Xem shop</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="view-item-shop-info">
+                    <div class="view-item-shop-info-item">
+                        <i class="fas fa-store"></i>
+                        <span>Sản phẩm: <%= item.shop.totalItem %></span>
+                    </div>
+                    <div class="view-item-shop-info-item">
+                        <i class="fas fa-user-check"></i>
+                        <span>Đang theo dõi: <%= item.shop.user.userinfo.totalFollow %></span>
+                    </div>
+                    <div class="view-item-shop-info-item">
+                        <i class="fas fa-user-friends"></i>
+                        <span>Người theo dõi: <%= item.shop.totalFollower %></span>
+                    </div>
+                    <div class="view-item-shop-info-item">
+                        <i class="fas fa-star"></i>
+                        <span>Đánh giá: 5.0</span>
+                    </div>
+                    <div class="view-item-shop-info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Ngày tham gia: <%= createdAt %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-item-notification fs-3 no-select" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <span class="fs-5">Đã thêm vào giỏ hàng</span>
+        </div>
+        <div class="view-item-layout container">
+            <div class="view-item-information">
+                <h2>CHI TIẾT SẢN PHẨM</h2>
+                <p>Loại sản phẩm: <%= item.category.category %></p>
+                <textarea rows="10" readonly><%= item.information %></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/shop/getNumber.js"></script>
+<script src="../js/shop/addToCart.js"></script>
+
+<%- include("../_partials/_footer") %>

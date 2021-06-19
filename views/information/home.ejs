@@ -1,0 +1,110 @@
+<%- include("../_partials/_information") %>
+
+    <div class="col-md-9">
+        <form method="POST" action="/information/home" class="personal-form">
+            <% if(info && info.length > 0){ %>
+                <div class="alert alert-info alert-information" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger alert-information" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <h1 class="no-select text-center">THÔNG TIN CÁ NHÂN</h1>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Tên đăng nhập</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="username" value="<%= username %>" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Tên đầy đủ</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="fullName" value="<%= fullName %>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Ngày sinh</label>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" name="birthday" id="birthday" value="<%= birthday %>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Số điện thoại</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="phone" value="<%= phone %>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Nghề nghiệp</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="job" value="<%= job %>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Nơi làm việc</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="workplace" value="<%= workplace %>">
+                </div>
+            </div>
+            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0 no-select">Giới tính</legend>
+                <div class="col-sm-9">
+                    <% if(!sexual){ %>
+                        <div class="form-check label-radio">                    
+                            <input class="form-check-input" type="radio" name="sexual" id="gridRadios1" value="Nam">
+                            <label class="form-check-label no-select" for="gridRadios1">Nam</label>
+                        </div>
+                        <div class="form-check label-radio">
+                            <input class="form-check-input" type="radio" name="sexual" id="gridRadios2" value="Nu">
+                            <label class="form-check-label no-select" for="gridRadios2">
+                                Nữ
+                            </label>
+                        </div>
+                    <% } %>
+                    <% if(sexual == "Nam"){ %>
+                        <div class="form-check label-radio">                    
+                            <input class="form-check-input" type="radio" name="sexual" id="gridRadios1" value="Nam" checked>
+                            <label class="form-check-label no-select" for="gridRadios1">
+                                Nam
+                            </label>
+                        </div>
+                        <div class="form-check label-radio">
+                            <input class="form-check-input" type="radio" name="sexual" id="gridRadios2" value="Nu">
+                            <label class="form-check-label no-select" for="gridRadios2">
+                                Nữ
+                            </label>
+                        </div>
+                    <% } %>
+                    <% if(sexual == "Nu"){ %>
+                        <div class="form-check label-radio">                    
+                            <input class="form-check-input" type="radio" name="sexual" id="gridRadios1" value="Nam">
+                            <label class="form-check-label no-select" for="gridRadios1">
+                                Nam
+                            </label>
+                        </div>
+                        <div class="form-check label-radio">
+                            <input class="form-check-input" type="radio" name="sexual" id="gridRadios2" value="Nu" checked>
+                            <label class="form-check-label no-select" for="gridRadios2">
+                                Nữ
+                            </label>
+                        </div>
+                    <% } %>
+                </div>
+            </fieldset>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Thông tin khác</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="otherInformation" rows="5"><%= otherInformation %></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-5"></div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/information/personalInformation.js"></script>
+<%- include("../_partials/_footer") %>

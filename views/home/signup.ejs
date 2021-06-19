@@ -1,0 +1,42 @@
+<%- include("../_partials/_header") %>
+
+<div class="col-md-8 login-form">
+    <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    <% if(info && info.length > 0){ %>
+        <div class="alert alert-info" role="alert">
+            <%= info %>
+        </div>
+    <% } %>
+    <div class="container">
+        <h3 class="no-select">Đăng ký</h3>
+        <div class="panel-body">
+            <form class="form-signin" method="POST" action="/signup">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                    <label for="floatingInput">Tên tài khoản</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Email" name="email">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                    <label for="floatingPassword">Mật khẩu</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="RePassword" name="rePassword">
+                    <label for="floatingPassword">Nhập lại mật khẩu</label>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn btn-outline-primary btn-lg">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("../_partials/_footer") %>

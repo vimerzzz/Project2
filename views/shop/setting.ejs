@@ -1,0 +1,51 @@
+<%- include("../_partials/_shop") %>
+
+    <div class="col-md-9">
+        <form method="POST" action="/shop/setting" class="personal-form" enctype="multipart/form-data">
+            <% if(info && info.length > 0){ %>
+                <div class="alert alert-info alert-information" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger alert-information" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <h1 class="no-select text-center">CÀI ĐẶT SHOP</h1>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Đổi tên shop</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="shopName" value="<%= shopName %>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Đổi ảnh đại diện shop</label>
+                <div class="col-sm-9">
+                    <input accept="image/*" type="file" class="form-control" name="image" onchange="imgInput(event)">
+                    <input type="text" class="hidden" readonly value="public/<%= image %>" name="oldImage">
+                </div>
+            </div>
+            <div class="row mb-3" id="img_div">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select"></label>
+                <div class="col-sm-9">
+                    <div class="img-circle">
+                        <img id="img" src="../<%= image %>" width="300px">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-3 col-form-label no-select">Chỉnh sửa mô tả</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="shopInformation" rows="5"><%= shopInformation %></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-5"></div>
+                <button type="submit" class="btn btn-primary col-1">Save</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/shop/imgInput.js"></script>
+
+<%- include("../_partials/_footer") %>

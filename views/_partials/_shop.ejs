@@ -1,0 +1,27 @@
+<%- include("../_partials/_header") %>
+
+    <div class="col-md-2">
+        <div class="p-3 position-sticky vertical-menu" style="top: 6rem;">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <% if(hasShop == 0){ %>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/shop/create">Tạo shop mới</a>
+                    </li>
+                <% } %>
+                <% if(hasShop == 1){ %>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/shop/dashboard">Thống kê</a>
+                    </li>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/shop/items">Chi tiết các sản phẩm</a>
+                    </li>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/shop/item-create">Thêm sản phẩm</a>
+                    </li>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/shop/setting">Cài đặt shop</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>

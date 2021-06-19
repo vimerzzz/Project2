@@ -1,0 +1,99 @@
+<%- include("../_partials/_header") %>
+
+    <div class="preview-banner">
+        <div class="container preview-banner-container">
+            <div class="background-banner-parent no-select">
+                <div class="background-banner-child" style="background-image: url(../<%= image %>);"></div>
+                <div class="avatar-banner" style="background-image: url(../<%= image %>);"></div>
+                <div class="shopName-banner">
+                    <h5><%= user.shop.shopName %></h5>
+                    <input type="text" class="hidden" readonly value="<%= user.shop.id %>" id="shopId">
+                    <% if(!currentFollow){ %>
+                        <div class="button-banner" onclick="add_follow()" id="button_follow">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Theo dõi</span>
+                        </div>
+                    <% } %>
+                    <% if(currentFollow){ %>
+                        <div class="button-banner" onclick="remove_follow()" id="button_follow">
+                            <i class="fas fa-user-check"></i>
+                            <span>Đang theo dõi</span>
+                        </div>
+                    <% } %>
+                    <div class="button-banner">
+                        <i class="fas fa-comment"></i>
+                        <span>Chat</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-banner no-select">
+                <div class="overview-item">
+                    <i class="fas fa-store"></i>
+                    <span>Sản phẩm: <%= user.shop.totalItem %></span>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-user-check"></i>
+                    <span>Đang theo dõi: <%= user.userinfo.totalFollow %></span>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Người theo dõi: <%= user.shop.totalFollower %></span>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-star"></i>
+                    <span>Đánh giá: 5.0</span>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Ngày tham gia: <%= createdAt %></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="preview-information">
+                <h4 class="text-danger"><%= user.shop.shopName %></h4><br>
+                <h5>GIỚI THIỆU SHOP</h5><br>
+                <p><%= user.shop.shopInformation %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container">
+            <div class="preview-content">
+                <h4 class="no-select">CÁC SẢN PHẨM CỦA SHOP</h4>
+                <div class="preview-all-item">
+                    <ul class="row no-select" style="padding: 0px">
+                        <% items.forEach(function(item){ %>
+                            <li class="preview-item">
+                                <a class="text-decoration-none" href="/item/<%= item.itemNameUrl %>">
+                                    <div class="preview-item-image">
+                                        <img class="preview-item-image-child" src="../<%= item.image %>" width="150px">
+                                    </div>
+                                    <div class="preview-item-name"><%= item.itemName %></div>
+                                    <% if(item.price != item.priceDiscount){ %>
+                                        <div class="preview-item-old-price"><%= item.price %></div>
+                                        <div class="preview-item-price text-danger"><%= item.priceDiscount %></div>
+                                    <% } %>
+                                    <% if(item.price == item.priceDiscount){ %>
+                                        <div class="preview-item-price text-danger"><%= item.price %></div>
+                                    <% } %>
+                                    <% if(item.amount){ %>
+                                        <div class="preview-item-status text-danger">CÒN HÀNG</div>
+                                    <% } %>
+                                    <% if(!item.amount){ %>
+                                        <div class="preview-item-status text-danger">HẾT HÀNG</div>
+                                    <% } %>
+                                </a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/preview.js"></script>
+
+<%- include("../_partials/_footer") %>

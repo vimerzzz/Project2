@@ -1,0 +1,72 @@
+.nav-item-info{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.vertical-menu{
+    background-color: rgb(235, 235, 235);
+}
+
+.personal-form{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 3%;
+    font-size: larger;
+    background-color: white;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-left: 7%;
+    padding-right: 7%;
+    border: 1px rgb(185, 185, 185) solid;
+    border-radius: 15px;
+    box-shadow: 5px 7px 15px red;
+}
+
+.personal-form h1{
+    margin-bottom: 50px;
+}
+
+.personal-form input[type=text], .personal-form input[type=file], .personal-form input[type=date], .personal-form input[type=email], .personal-form input[type=password]{
+    width: 100%;
+    border: 2px rgb(180, 180, 180) solid;
+}
+
+.personal-form input[type=file]{
+    background-color: white;
+}
+
+.personal-form textarea, .personal-form select{
+    width: 100%;
+    border: 2px rgb(180, 180, 180) solid;
+}
+
+.personal-form > .row{
+    align-items: center;
+}
+
+.label-radio{
+    margin-bottom: 20px;
+}
+
+.personal-form input[type=button], .personal-form button{
+    width: max-content;
+}
+
+.personal-form button{
+    margin-bottom: 20px;
+}
+
+.change-btn{
+    margin-left: 0px!important;
+}
+
+.address-row{
+    border: none!important;
+    padding-left: 0px!important;
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+}
+
+.modal-body > .row{
+    align-items: center;
+}

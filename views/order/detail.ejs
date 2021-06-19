@@ -1,0 +1,96 @@
+<%- include("../_partials/_header") %>
+
+    <form action="/order/delete/<%= order.id %>" method="POST">
+        <div class="container">
+            <div class="container cart-order-layout">
+                <h4 class="no-select">CHI TIẾT ĐƠN HÀNG</h4>
+                <div class="cart-order-information">
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Họ tên đầy đủ</b></div>
+                        <div class="col-md-9"><%= order.fullName %></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Số điện thoại</b></div>
+                        <div class="col-md-9"><%= order.phone %></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Địa chỉ</b></div>
+                        <div class="col-md-9"><%= order.address %></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Phương thức thanh toán</b></div>
+                        <div class="col-md-9">Thanh toán khi nhận hàng</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Phương thức vận chuyển</b></div>
+                        <div class="col-md-9"><%= order.deliver.deliverName %>: <%= order.deliver.deliverPriceTmp %>&nbsp;&nbsp;<em>(Miễn phí vận chuyển từ <%= order.deliver.freePrice %>)</em></div>
+                    </div>
+                    <div class="row" style="align-items: unset;">
+                        <div class="col-md-3 no-select"><b>Ghi chú</b></div>
+                        <textarea class="form-control item-detail-disabled" rows="5" disabled style="width: 75%;"><%= order.note %></textarea>
+                    </div>
+                </div>
+                <div class="cart-order-items">
+                    <% for(var orderItem of order.orderitems){ %>
+                        <div class="cart-order-item">
+                            <div class="cart-order-item-image no-select">
+                                <img src="../<%= orderItem.item.image %>" height="90px" width="80px">
+                            </div>
+                            <div class="cart-order-item-info">
+                                <div class="cart-order-item-info-name">
+                                    <a href="/item/<%= orderItem.item.itemNameUrl %>">
+                                        <b><%= orderItem.amount %> x <%= orderItem.item.itemName %></b>
+                                    </a>
+                                </div>
+                                <div class="cart-order-item-info-name--under">
+                                    <div class="cart-order-item-info-name--under-text">
+                                        <div class="cart-order-item-info-price">
+                                            <div><b>Thành tiền</b></div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-order-item-info-name--under-number">
+                                        <div class="cart-order-item-price">
+                                            <div><%= orderItem.purchasePrice %></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <div class="cart-order-item">
+                        <div class="cart-order-item-info">
+                            <div class="cart-order-item-info-name--under">
+                                <div class="cart-order-item-info-name--under-text">
+                                    <div class="cart-order-item-info-price">
+                                        <div><b>Phí vận chuyển</b></div>
+                                    </div>
+                                    <div class="cart-order-item-info-price">
+                                        <div><b>Tổng số tiền cần thanh toán</b></div>
+                                    </div>
+                                </div>
+                                <div class="cart-order-item-info-name--under-number">
+                                    <div class="cart-order-item-price">
+                                        <div id="deliverPrice"><%= order.deliver.deliverPrice %></div>
+                                    </div>
+                                    <div class="cart-order-item-price">
+                                        <div id="totalPrice"><%= order.purchasePrice %></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <% if((order.orderstatusId == 1) || (order.orderstatusId == 2)){ %>
+                        <button class="btn btn-danger btn-lg" type="submit">Hủy đơn hàng</button>
+                    <% } %>
+                    <% if((order.orderstatusId == 3) || (order.orderstatusId == 4)){ %>
+                        <button class="btn btn-danger btn-lg" type="submit" disabled>Hủy đơn hàng</button>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="../js/purchase/order.js"></script>
+
+<%- include("../_partials/_footer") %>

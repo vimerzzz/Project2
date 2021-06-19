@@ -1,0 +1,225 @@
+.view-item-layout{
+    margin-top: 2rem;
+    margin-left: 10%;
+    margin-right: 8%;
+    padding-left: 5%;
+    padding-right: 3%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    width: 82%;
+    min-width: 900px;
+    background-color: white;
+}
+
+.view-item-layout:last-of-type{
+    margin-bottom: 2rem;
+}
+
+.view-item-image-layout{
+    display: flex;
+    flex-direction: row;
+}
+
+.view-item-image{
+    width: 400px;
+    min-width: 400px!important;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.view-item-image-child{
+    transition: all 0.5s;
+}
+
+.view-item-image-child:hover{
+    transform: scale(1.2);
+}
+
+.view-item-info{
+    margin-left: 5%;
+    margin-right: 4%;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: fit-content;
+}
+
+.view-item-old-price{
+    color: rgb(151, 151, 151);
+    text-decoration: line-through;
+}
+
+.discount-percent{
+    margin-left: 1rem;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: red;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+}
+
+.button-select-amount{
+    margin-left: 4rem;
+    align-items: center;
+}
+
+.button-select-amount > button, .button-select-amount > span > input{
+    background-color: rgb(255, 255, 255);
+    margin: 0px;
+    border: 1px solid rgb(197, 197, 197);
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 5px 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.button-select-amount > span > input{
+    width: 100px;
+}
+
+.button-select-amount > button:hover, .button-select-amount > button:focus, .button-select-amount > span > input:hover, .button-select-amount > span > input:focus{
+    border: 1px solid rgb(197, 197, 197);
+    outline: none;
+    overflow: hidden;
+}
+
+.button-select-amount > button:after{
+    content: "";
+    background-color: rgba(215, 215, 215, 0.4);
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-top: 100%;
+    padding-left: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+.button-select-amount > button:active:after {
+    padding-top: 100%;
+    padding-left: 100%;
+    opacity: 1;
+    transition: 0s;
+}
+
+.add-cart{
+    padding: 10px;
+    width: 40%;
+    max-width: 250px!important;
+    margin-right: 1.5rem;
+}
+
+.add-cart:first-of-type:hover{
+    background-color: rgb(255, 217, 217);
+    color: #dc3545;
+}
+
+.add-cart:focus{
+    box-shadow: none;
+}
+
+.view-item-banner{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.view-item-avatar{
+    width: 100px;
+    height: 100px;
+    border: rgb(238, 108, 108) solid 5px;
+    border-radius: 50%;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.view-item-shop{
+    margin-left: 1%;
+}
+
+.view-item-shop > a{
+    text-decoration: none;
+    color: black;
+    margin-left: 8%;
+    transition: all 0.5s;
+}
+
+.view-item-shop > a:hover, .view-item-shop > a:focus{
+    color: rgb(37, 173, 173);
+}
+
+.view-item-button{
+    outline: none;
+    border: none;
+    background-color: white;
+    color: black;
+    transition: all 0.5s;
+    width: max-content;
+    padding: 3px 20px;
+    margin-top: 20px;
+}
+
+.view-item-button:hover, .view-item-button:focus{
+    color: white;
+    background-color: rgb(37, 173, 173);
+}
+
+.view-item-shop-info{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 1.875rem;
+    padding-top: .625rem;
+    height: 110px;
+}
+
+.view-item-shop-info-item{
+    padding-right: 50px;
+    margin-bottom: .5rem;
+}
+
+.view-item-information{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.view-item-information > p{
+    margin-top: 40px;
+}
+
+.view-item-information > textarea{
+    margin-top: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.view-item-notification{
+    color: white;
+    background-color: rgba(53, 53, 53, 0.6);
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 30px 60px;
+    border-radius: 20px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.view-item-notification > i{
+    margin-right: 10px;
+}

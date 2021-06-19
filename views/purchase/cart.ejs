@@ -1,0 +1,73 @@
+<%- include("../_partials/_header") %>
+
+    <div class="container">
+        <div class="row cart-layout container">
+            <h4 class="no-select">GIỎ HÀNG</h4>
+            <div class="col-md-8">
+                <% if(carts[0]){ %>
+                    <% carts.forEach(function(cart){ %>
+                        <div class="cart-item" name="item">
+                            <input type="text" value="<%= cart.id %>" name="cartId" class="hidden" readonly>
+                            <div class="cart-item-image no-select">
+                                <img src="../<%= cart.item.image %>" height="90px" width="80px">
+                            </div>
+                            <div class="cart-item-info">
+                                <div class="cart-item-info-name">
+                                    <a href="/item/<%= cart.item.itemNameUrl %>">
+                                        <b><%= cart.item.itemName %></b>
+                                    </a>
+                                </div>
+                                <div class="cart-item-info-price">
+                                    <div><b>Đơn giá</b></div>
+                                    <div class="cart-item-price"><%= cart.item.priceDiscount %></div>
+                                </div>
+                                <div class="cart-item-info-amount">
+                                    <div><b>Số lượng</b></div>
+                                    <div class="cart-item-info-button">
+                                        <button type="button" onclick="get_before_number(this)" name="be_b">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <span name="numberInput">
+                                            <input type="text" value="<%= cart.amount %>" name="number" onkeypress="return (event.charCode >= 48) && (event.charCode <= 57);" oninput="check_limit(this)">
+                                        </span>
+                                        <button type="button" onclick="get_after_number(this)" name="af_b">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        <div class="hidden" name="amount"><%= cart.item.amount %></div>
+                                    </div>
+                                    <div class="cart-item-price" name="maxPrice"><%= cart.maxPrice %></div>
+                                </div>
+                            </div>
+                            <div class="cart-item-update no-select">
+                                <div name="deleteBtn" onclick="delete_item(this)">Xóa</div>
+                                <div name="updateBtn" onclick="update_item(this)">Cập nhật</div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } %>
+                <% if(!carts[0]){ %>
+                    <div class="cart-item no-select" style="height: 90px; position: relative;">
+                        <h4 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">KHÔNG CÓ GÌ TRONG GIỎ HÀNG</h4>
+                    </div>
+                <% } %>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="cart-purchase col-md-3">
+                <% if(carts[0]){ %>
+                    <div class="cart-purchase-info">
+                        <span><b>Thành tiền</b></span>
+                        <span class="text-danger"><%= totalPrice %></span>
+                    </div>
+                    <div class="cart-purchase-button">
+                        <a href="/purchase/order">
+                            <button type="button" class="btn btn-success">Thanh toán <i class="fas fa-arrow-right"></i></button>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="../js/purchase/cart.js"></script>
+    <script src="../js/shop/getNumber.js"></script>
+
+<%- include("../_partials/_footer") %>

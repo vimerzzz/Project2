@@ -1,0 +1,42 @@
+<%- include("../_partials/_header") %>
+
+    <div class="col-md-2">
+        <div class="p-3 position-sticky vertical-menu" style="top: 6rem;">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item nav-item-info">
+                    <a class="nav-link link-dark no-select" href="/information/home">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item nav-item-info">
+                    <a class="nav-link link-dark no-select" href="/information/notification">Thông báo</a>
+                </li>
+                <li class="nav-item nav-item-info">
+                    <a class="nav-link link-dark no-select" href="/order/all">Đơn hàng</a>
+                </li>
+                <li class="nav-item nav-item-info">
+                    <a class="nav-link link-dark no-select" href="/information/follower">Sổ theo dõi</a>
+                </li>
+                <li class="nav-item nav-item-info">
+                    <a class="nav-link link-dark no-select" href="/information/address">Sổ địa chỉ</a>
+                </li>
+                <% if(role == 1){ %>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/information/user">Quản lý người dùng</a>
+                    </li>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/information/shop">Quản lý shop</a>
+                    </li>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/information/category">Quản lý loại sản phẩm</a>
+                    </li>
+                <% } %>
+                <% if(role == 3){ %>
+                    <li class="nav-item nav-item-info">
+                        <a class="nav-link link-dark no-select" href="/information/deliver">Quản lý đơn hàng</a>
+                    </li>
+                <% } %>
+                <li class="nav-item nav-item-info">
+                    <a class="nav-link link-dark no-select" href="/information/setting">Cài đặt tài khoản</a>
+                </li>
+            </ul>
+        </div>
+    </div>

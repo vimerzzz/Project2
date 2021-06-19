@@ -1,0 +1,42 @@
+<%- include("../_partials/_information") %>
+
+    <div class="col-md-9">
+        <form method="POST" action="/information/deliver-create" class="personal-form">
+            <% if(info && info.length > 0){ %>
+                <div class="alert alert-info alert-information" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger alert-information" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <h1 class="no-select text-center">TẠO ĐƠN VỊ VẬN CHUYỂN MỚI</h1>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Tên đơn vị vận chuyển</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="deliverName">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Giá vận chuyển</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="deliverPrice">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-3 col-form-label no-select">Giá miễn phí vận chuyển (Tối đa 300,000 VNĐ)</label>
+                <div class="col-sm-9" id="freePriceInput">
+                    <input type="text" class="form-control" name="freePrice" id="freePrice" value="200000" onkeypress="return (event.charCode >= 48) && (event.charCode <= 57);" oninput="check_limit()">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-5"></div>
+                <button type="submit" class="btn btn-primary col-1">Save</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/information/deliver.js"></script>
+
+<%- include("../_partials/_footer") %>

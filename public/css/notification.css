@@ -1,0 +1,27 @@
+.notification-layout{
+    background-color: white;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.notification-layout:first-of-type{
+    margin-top: 3rem;
+}
+
+.notification-layout:last-of-type{
+    margin-bottom: 3rem;
+}
+
+.notification-layout > div:last-of-type{
+    font-weight: 600;
+}
+
+.notification-layout > div:first-of-type{
+    font-weight: 400;
+    font-size: small;
+}

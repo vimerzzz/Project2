@@ -1,0 +1,156 @@
+<%- include("../_partials/_header") %>
+
+    <form action="/purchase/order" method="POST">
+        <div class="container">
+            <div class="container cart-order-layout">
+                <h4 class="no-select">THÔNG TIN THANH TOÁN</h4>
+                <div class="cart-order-information">
+                    <% if(info && info.length > 0){ %>
+                        <div class="alert alert-info alert-information" role="alert">
+                            <%= info %>
+                        </div>
+                    <% } %>
+                    <% if(error && error.length > 0){ %>
+                        <div class="alert alert-danger alert-information" role="alert">
+                            <%= error %>
+                        </div>
+                    <% } %>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Họ tên đầy đủ</b></div>
+                        <div class="col-md-9">
+                            <input class="form-control" type="text" name="fullName" value="<%= user.userinfo.fullName %>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Số điện thoại</b></div>
+                        <div class="col-md-9">
+                            <input class="form-control" type="text" name="phone" value="<%= user.userinfo.phone %>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9 no-select">
+                            <input class="form-check-input" type="checkbox" name="checkBox" value="1">
+                            <label class="form-check-label">Đặt hàng hộ</label>
+                        </div>
+                    </div>
+                    <div class="row" style="align-items: unset;">
+                        <div class="col-md-3 no-select"><b>Địa chỉ</b></div>
+                        <div class="col-md-9">
+                            <% for(var index in user.addresses){ %>
+                                <div class="form-check label-radio">
+                                    <input class="form-check-input" type="radio" name="address" value="<%= user.addresses[index].id %>">
+                                    <label class="form-check-label"><%= user.addresses[index].address %></label>
+                                </div>
+                            <% } %>
+                            <div class="form-check label-radio no-select">
+                                <input class="form-check-input" type="radio" name="address" value="0">
+                                <label class="form-check-label">Thêm địa chỉ mới</label>
+                            </div>
+                            <div id="addAddressField"></div>
+                        </div>
+                    </div>
+                    <div class="row" style="align-items: unset;">
+                        <div class="col-md-3 no-select"><b>Phương thức thanh toán</b></div>
+                        <div class="col-md-9">
+                            <div class="form-check label-radio no-select">
+                                <input class="form-check-input" type="radio" name="purchaseMethod" value="1" checked>
+                                <label class="form-check-label">Thanh toán khi nhận hàng</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="align-items: unset;">
+                        <div class="col-md-3 no-select"><b>Phương thức vận chuyển</b></div>
+                        <div class="col-md-9">
+                            <% for(var index in delivers){ %>
+                                <div class="form-check label-radio no-select">
+                                    <% if(index == 0){ %>
+                                        <input class="form-check-input" type="radio" name="deliverId" value="<%= delivers[index].id %>" checked>
+                                    <% } %>
+                                    <% if(index != 0){ %>
+                                        <input class="form-check-input" type="radio" name="deliverId" value="<%= delivers[index].id %>">
+                                    <% } %>
+                                    <label class="form-check-label"><%= delivers[index].deliverName %>: <%= delivers[index].deliverPriceTextTmp %>&nbsp;&nbsp;<em>(Miễn phí vận chuyển từ <%= delivers[index].freePrice %>)</em></label>
+                                    <input type="text" name="getDeliverPrice" class="hidden" value="<%= delivers[index].deliverPrice %>" readonly>
+                                    <input type="text" name="getDeliverPriceText" class="hidden" value="<%= delivers[index].deliverPriceText %>" readonly>
+                                    <input type="text" name="getTotalPrice" class="hidden" value="<%= totalPrice[index] %>" readonly>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 no-select"><b>Ghi chú</b></div>
+                        <div class="col-md-9">
+                            <textarea class="form-control" type="text" name="note" rows="5" style="border-color: black;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <% if(user.carts[0]){ %>
+                    <div class="cart-order-items">
+                        <% for(var cart of user.carts){ %>
+                            <div class="cart-order-item">
+                                <div class="cart-order-item-image no-select">
+                                    <img src="../<%= cart.item.image %>" height="90px" width="80px">
+                                </div>
+                                <div class="cart-order-item-info">
+                                    <div class="cart-order-item-info-name">
+                                        <a href="/item/<%= cart.item.itemNameUrl %>">
+                                            <b><%= cart.amount %> x <%= cart.item.itemName %></b>
+                                        </a>
+                                    </div>
+                                    <div class="cart-order-item-info-name--under">
+                                        <div class="cart-order-item-info-name--under-text">
+                                            <div class="cart-order-item-info-price">
+                                                <div><b>Đơn giá</b></div>
+                                            </div>
+                                            <div class="cart-order-item-info-price">
+                                                <div><b>Thành tiền</b></div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-order-item-info-name--under-number">
+                                            <div class="cart-order-item-price">
+                                                <div><%= cart.item.priceDiscount %></div>
+                                            </div>
+                                            <div class="cart-order-item-price">
+                                                <div><%= cart.maxPrice %></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                        <div class="cart-order-item">
+                            <div class="cart-order-item-info">
+                                <div class="cart-order-item-info-name--under">
+                                    <div class="cart-order-item-info-name--under-text">
+                                        <div class="cart-order-item-info-price">
+                                            <div><b>Phí vận chuyển</b></div>
+                                        </div>
+                                        <div class="cart-order-item-info-price">
+                                            <div><b>Tổng số tiền cần thanh toán</b></div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-order-item-info-name--under-number">
+                                        <div class="cart-order-item-price">
+                                            <div id="deliverPrice"><%= delivers[0].deliverPriceText %></div>
+                                        </div>
+                                        <div class="cart-order-item-price">
+                                            <div id="totalPrice"><%= totalPrice[0] %></div>
+                                        </div>
+                                        <input type="text" class="hidden" value="<%= delivers[0].deliverPrice %>" id="initialDeliverPrice" readonly>
+                                        <input type="text" class="hidden" value="<%= totalPriceNumber %>" name="purchasePrice" id="purchasePrice" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center" style="margin-top: 2rem;">
+                        <button class="btn btn-success btn-lg" type="submit">Xác nhận thanh toán</button>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </form>
+    <script src="../js/purchase/order.js"></script>
+
+<%- include("../_partials/_footer") %>

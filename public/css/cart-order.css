@@ -1,0 +1,125 @@
+.cart-order-layout{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.cart-order-information{
+    background-color: white;
+    margin-bottom: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    min-width: 530px!important;
+}
+
+.cart-order-information > .row{
+    margin: 0px!important;
+    padding: 0px!important;
+    align-items: center;
+}
+
+.cart-order-information > .row:not(:last-of-type){
+    margin-bottom: 3rem!important;
+}
+
+.cart-order-information > .row > .col-md-3{
+    min-width: 120px!important;
+}
+
+.cart-order-information > .row > .col-md-9 > input, .cart-order-information > .row > .col-md-9 > .form-check > input{
+    border-color: black!important;
+}
+
+.cart-order-information > .row > .col-md-9 > .form-check:last-of-type{
+    margin-bottom: 0px!important;
+}
+
+.cart-order-items{
+    background-color: white;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-width: 530px!important;
+}
+
+.cart-order-item{
+    display: flex;
+}
+
+.cart-order-item:not(:last-of-type){
+    border-bottom: 1px grey dashed;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.cart-order-item-image{
+    height: 90px!important;
+    max-height: 90px!important;
+    margin-right: 20px;
+}
+
+.cart-order-item-info{
+    padding-top: 10px;
+    width: 100%;
+}
+
+.cart-order-item-info-name{
+    height: 1.5rem;
+    overflow: hidden;
+}
+
+.cart-order-item-info-name > a{
+    text-decoration: none;
+    color: black;
+}
+
+.cart-order-item-info-name > a:hover{
+    color: rgb(37, 173, 173);
+}
+
+.cart-order-item-info-name--under{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-right: 3%;
+}
+
+.cart-order-item-info-name--under-text{
+    width: 100%;
+    position: relative;
+}
+
+.cart-order-item-info-name--under-number{
+    width: 150px;
+    position: relative;
+}
+
+.cart-order-item-info-price{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 1.5rem;
+    position: relative;
+}
+
+.cart-order-item-info-price > div:first-of-type{
+    position: absolute;
+    right: 0%;
+}
+
+.cart-order-item-old-price{
+    color: rgb(151, 151, 151);
+    text-decoration: line-through;
+}
+
+.cart-order-item-price{
+    text-align: end;
+    color: #dc3545;
+}
+
+.cart-order-layout > .text-center > .btn{
+    border-radius: 15px;
+}

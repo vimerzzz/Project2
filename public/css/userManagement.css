@@ -1,0 +1,35 @@
+.user-list{
+    border: 1px black solid!important;
+    border-radius: 0px!important;
+    padding: 10px!important;
+    margin-left: 0px!important;
+    margin-bottom: 0px!important;
+    outline: none!important;
+}
+
+.col-2-user{
+    flex: 0 0 auto!important;
+    width: 16.6666666667%!important;
+}
+
+.col-3-user{
+    width: 25%!important;
+    flex: 0 0 auto!important;
+}
+
+.col-5-user{
+    width: 41.6666666667%!important;
+    flex: 0 0 auto!important;
+}
+
+.save-user{
+    width: 60px!important;
+    flex: 0 0 auto!important;
+    margin-left: 10px!important;
+    border: 1px black solid!important;
+}
+
+.disabled{
+    background-color: #d3d3d4!important;
+    color: black!important;
+}

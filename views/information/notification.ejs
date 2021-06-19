@@ -1,0 +1,16 @@
+<%- include("../_partials/_information") %>
+
+    <div class="col-md-9">
+        <% notifications.forEach(function(notification){ %>
+            <div class="notification-layout">
+                <div>
+                    <%= notification.fullTime %>
+                </div>
+                <div class="fs-5">
+                    <%= notification.content %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<%- include("../_partials/_footer") %>
